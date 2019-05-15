@@ -14,9 +14,9 @@ let package = (name, src_dir, lib_dir) => {
        switch (ext) {
        | ".cmt"
        | ".cmti" =>
-         switch (Hashtbl.find_opt(modules, filename)) {
-         | None => Hashtbl.add(modules, filename, path)
-         | Some(last) =>
+         switch (Hashtbl.find_all(modules, filename)) {
+         | [] => Hashtbl.add(modules, filename, path)
+         | [last, ..._] =>
            let last_extension = last |> Fpath.get_ext;
            let extension = path |> Fpath.get_ext;
            switch (last_extension, extension) {

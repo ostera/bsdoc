@@ -4,19 +4,17 @@
   "name": "bsdoc",
   "version": "0.1.0",
   "sources": {
-    "dir" : "src",
-    "subdirs" : true
+    "dir": "src",
+    "subdirs": true
   },
   "package-specs": {
     "module": "commonjs",
     "in-source": false
   },
   "suffix": ".bs.js",
-  "bs-dependencies": [
-    "@elliottcable/bs-cmdliner",
-  ],
+  "bs-dependencies": ["@elliottcable/bs-cmdliner"],
   "warnings": {
-    "error" : "+101"
+    "error": "+101"
   },
   "namespace": false,
   "refmt": 3

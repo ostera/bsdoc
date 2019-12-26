@@ -1,4 +1,5 @@
 # bsdoc
+
 > Documentation Generation for BuckleScript projects
 
 [![Build Status](https://dev.azure.com/reuniverse/bsdoc/_apis/build/status/reuniverse.bsdoc?branchName=master)](https://dev.azure.com/ostera/reuniverse/_build/latest?definitionId=1?branchName=master)

@@ -10,7 +10,7 @@ Read more in the docs: [BsDoc](https://reuniverse.github.io/bsdoc)
 Install in your project using `npm` or `yarn`:
 
 ```sh
-$ yarn add bsdoc@6.0.0-alpha
+$ yarn add bsdoc@6.0.1-alpha
 yarn add v1.12.3
 [1/4] 🔍  Resolving packages...
 [2/4] 🚚  Fetching packages...
@@ -21,9 +21,9 @@ warning example@0.1.0: No license field
 warning "bsdoc" is already in "devDependencies". Please remove existing entry first before adding it to "dependencies".
 success Saved 1 new dependency.
 info Direct dependencies
-└─ bsdoc@6.0.0-alpha
+└─ bsdoc@6.0.1-alpha
 info All dependencies
-└─ bsdoc@6.0.0-alpha
+└─ bsdoc@6.0.1-alpha
 ✨  Done in 6.68s.
 ```
 

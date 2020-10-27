@@ -2,6 +2,10 @@
 
 const fs = require("fs");
 const path = require("path");
+const packageJson = require("./package.json");
+const packageFiles = packageJson.files.map((f) =>
+  f[f.length - 1] === "/" ? f.substring(0, f.length - 1) : f
+);
 
 const PROG = "bsdoc";
 
@@ -35,6 +39,7 @@ if (!supported) {
   process.exit(1);
 }
 
+fs.readdirSync("./").filter(notInPackage).map(rm);
 copyRecursiveSync(`platforms/${platformPath}/_export`, "./_export");
 copyRecursiveSync(`platforms/${platformPath}/bin`, "./bin");
 copyRecursiveSync(
@@ -55,7 +60,9 @@ function copyRecursiveSync(src, dest) {
   var stats = exists && fs.statSync(src);
   var isDirectory = exists && stats.isDirectory();
   if (isDirectory) {
-    fs.mkdirSync(dest);
+    if (!fs.existsSync(dest)) {
+      fs.mkdirSync(dest);
+    }
     fs.readdirSync(src).forEach(function (childItemName) {
       copyRecursiveSync(
         path.join(src, childItemName),
@@ -65,4 +72,20 @@ function copyRecursiveSync(src, dest) {
   } else {
     fs.copyFileSync(src, dest);
   }
+}
+
+function rm(path) {
+  if ("rmSync" in fs) {
+    return fs.rmSync(path, { force: true, recursive: true });
+  }
+  const stats = fs.statSync(path);
+  if (stats.isDirectory) {
+    fs.rmdirSync(path, { recursive: true });
+  } else {
+    fs.unlinkSync(path);
+  }
+}
+
+function notInPackage(filename) {
+  return packageFiles.indexOf(filename) === -1;
 }
